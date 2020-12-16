@@ -9,6 +9,8 @@ Our main contribution is the incorporation and comparison of state-of-the-art da
 
 Our proposed model is the one that uses CT-BERT language model which achieves **0.906** accuracy and **0.905** f1-score in the test set and it was placed at the third position of the respective AIcrowd competition (submission ID: 107963).
 
+Our **pre-trained model** can be found [here](https://drive.google.com/file/d/1172IY_3vYOWndGdEMhp3XB1AQZ_Bm7xl/view?usp=sharing).
+
 # Colab
 For a step-by-step guide to run the project, please take a look at this notebook:
 
@@ -20,7 +22,6 @@ We strongly advice running the project with GPU and Colab offers free GPUs.
 
 * [Getting started](#getting-started)
     * [Install](#install)
-    * [Dependencies](#dependencies)
     * [Data](#report)
 * [Modeling](#training-the-model)
     * [Training](#training)
@@ -161,11 +162,12 @@ project
 │   ├── model_selection.py
 │   ├── preprocessing.py
 │   └── run.py
-└── test
+└── test                       # unit tests
    ├── test_data_cleaning.py
    ├── test_embeddings.py
    └── test_preprocessing.py
 
 ```
+
 
 
