@@ -40,7 +40,7 @@ We strongly advice running the project with GPU and Colab offers free GPUs.
 ### Install
 Clone and enter the repository
 ```bash
-git clone https://paola-md:<>@github.com/CS-433/cs-433-project-2-mlakes MLProject2
+git clone https://<YOUR USER>:<YOUR PASSWORD>@github.com/CS-433/cs-433-project-2-mlakes MLProject2
 cd MLProject2
 ```
 
