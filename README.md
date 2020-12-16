@@ -43,6 +43,12 @@ git clone https://paola-md:<>@github.com/CS-433/cs-433-project-2-mlakes MLProjec
 cd MLProject2
 ```
 
+We recommend installing the dependencies inside a python virtual environment so you don't have any conflicts with other packages installed on the machine. You can use virutalenv, pyenv or condaenv to do that.
+```bash
+pyenv virtualenv mlproject2
+pyenv activate mlproject2
+```
+
 Project dependencies are located in the `requirements.txt` file. \
 To install them you should run:
 ```bash
