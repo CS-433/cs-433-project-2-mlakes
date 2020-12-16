@@ -77,7 +77,7 @@ mv data/twitter-datasets/test_data.txt data/test_data.txt
 
 ## Embeddings
 
-The BiLSTM can be trained with glove and word2vec embeddings. In order to run these models, we need to create the vocabulary or download a pre-trained one.
+The BiLSTM can be trained with glove and word2vec embeddings. In order to run these models, you need to create the vocabulary (word2vec) or download a pre-trained one (gloVe).
 
 ### Word2vec
 Constructs a a vocabulary list of words appearing at least 5 times.
