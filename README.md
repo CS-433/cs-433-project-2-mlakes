@@ -9,6 +9,13 @@ Our main contribution is the incorporation and comparison of state-of-the-art da
 
 Our proposed model is the one that uses CT-BERT language model which achieves **0.906** accuracy and **0.905** f1-score in the test set and it was placed at the third position of the respective AIcrowd competition.
 
+# Colab
+For a demo on how the best model was finetuned, please take a look at this colab:
+
+<p align="left"><a href="https://colab.research.google.com/drive/1cxs7OSn9n3HlGPBSR77QkY5H0WHjV6Vx?usp=sharing" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></p>
+
+
+
 
 * [Getting started](#getting-started)
     * [Data](#data)
