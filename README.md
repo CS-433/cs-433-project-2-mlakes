@@ -70,7 +70,29 @@ mv data/twitter-datasets/train_neg_full.txt data/train_neg_full.txt
 mv data/twitter-datasets/train_pos_full.txt data/train_pos_full.txt 
 mv data/twitter-datasets/test_data.txt data/test_data.txt
 ```
+
+
 # Modeling
+
+## Embeddings
+
+The BiLSTM can be trained with glove and word2vec embeddings. In order to run these models, we need to create the vocabulary or download a pre-trained one.
+
+### Word2vec
+Constructs a a vocabulary list of words appearing at least 5 times.
+```bash
+src/preprocessing_glove/build_vocab.sh
+src/preprocessing_glove/cut_vocab.sh
+python preprocessing_glove/pickle_vocab.py
+```
+
+### GloVe
+You must download the pretrained embeddings from [here](https://nlp.stanford.edu/projects/glove/) or using wget:
+```bash
+wget http://nlp.stanford.edu/data/glove.twitter.27B.zip
+mv glove.twitter.27B.zip data/embeddings/glove.twitter.27B.zip
+unzip data/embeddings/glove.twitter.27B.zip -d data/embeddings
+```
 
 ## Training
 To train the model, you can run
@@ -91,7 +113,7 @@ The following models can be trained:
 * bert :  Bidirectional Encoder Representations from Transformers (CT-BERT)
 * zero : Few shot learning model
 
-To learn more, read the report. 
+To learn more, read the report :D
 
 ## Testing
 To create the predictions, you can run
