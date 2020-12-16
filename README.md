@@ -7,7 +7,7 @@ We present four different models: a simple machine learning baseline model; two 
 
 Our main contribution is the incorporation and comparison of state-of-the-art data representations; transformers and classification models; as well as the use of zero-shot learning for data efficiency. 
 
-Our proposed model is the one that uses CT-BERT language model which achieves **0.906** accuracy and **0.905** f1-score in the test set and it was placed at the third position of the respective AIcrowd competition (submission ID: 107963).
+Our proposed model is the one that uses [CT-BERT](https://github.com/digitalepidemiologylab/covid-twitter-bert) language model which achieves **0.906** accuracy and **0.905** f1-score in the test set and it was placed at the third position of the respective AIcrowd competition (submission ID: 107963).
 
 Our **pre-trained model** can be found [here](https://drive.google.com/drive/folders/1aLWxJdPFwOyqvNkkc_QyzhBC9ofY9tgS?usp=sharing).
 
