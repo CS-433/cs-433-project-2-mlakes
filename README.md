@@ -113,7 +113,7 @@ The project can be easily run in any virtual machine without the need to install
 REPO is availabe in Dockerhub: paolamedo/bert_notebook:latest
 ```
 REPO_URL=paolamedo/bert_notebook:latest
-BUILD_DIR=/home/paola/Documents/EPFL/BERT/MLProject2 <location of the cloned repo>
+BUILD_DIR=/home/paola/Documents/EPFL/MLProject2 <location of the cloned repo>
 ```
 2. Run docker
 ```
