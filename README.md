@@ -26,8 +26,10 @@ We strongly advice running the project with GPU and Colab offers free GPUs.
     * [Training](#training)
     * [Testing](#testing)
     * [Complete pipeline](#complete-pipeline)
+    * [Running with Docker](#running-with-docker)
 * [Project Architecture](#project-architecture)
     * [Report](#report)
+    * [Folder structure](#folder-structure)
 
 
 
@@ -95,6 +97,36 @@ If no parameters are passed, bert model is trained and then the predictions on t
 python src/run.py 
 ```
 
+### Running with Docker
+The project can be easily run in any virtual machine without the need to install any dependencies using our docker container. 
+
+0. Make sure you have [docker](https://docs.docker.com/engine/install/ubuntu/) and git installed and running.  
+
+1. Declare global variables
+REPO is availabe in Dockerhub: paolamedo/bert_notebook:latest
+```
+REPO_URL=paolamedo/bert_notebook:latest
+BUILD_DIR=/home/paola/Documents/EPFL/BERT/MLProject2 <location of the cloned repo>
+```
+2. Run docker
+```
+docker run --rm -it -e GRANT_SUDO=yes \
+--user root \
+-p 8888:8888 \
+-e JUPYTER_TOKEN="easy" \
+-v $BUILD_DIR:/home/jovyan/work $REPO_URL
+```
+
+3. You will now be able to open jupyter notebook and run notebooks/MLProject2_GAP.ipynb:
+```
+http://localhost:8888/?token=easy
+```
+or run from the terminal
+```bash
+python src/run.py 
+```
+
+
 # Project Architecture
 
 ### Report
@@ -102,7 +134,7 @@ Our paper regarding the methodology and the experiments of the proposed model
 is located under the `report/` directory in pdf format. 
 
 
-## Project Architecture
+## Folder structure
 The source code of this project is structured in the following manner. 
 
 ```
@@ -136,28 +168,4 @@ project
 
 ```
 
-
-
-### Running docker other VM
-The project was dockerized. The project can be easily run in any virtual machine without the need to install any dependencies using our docker containers. 
-
-0. Make sure you have docker[https://docs.docker.com/engine/install/ubuntu/] and git installed and running.  
-
-1. Declare global variables
-REPO is availabe in Dockerhub: paolamedo/bert_notebook:latest
-```
-REPO_URL=paolamedo/bert_notebook:latest
-BUILD_DIR=/home/paola/Documents/EPFL/BERT/MLProject2 <location of the cloned repo>
-```
-2. Run docker
-```
-docker run --rm -it -e GRANT_SUDO=yes \
---user root \
--p 8888:8888 \
---net=host \
--e JUPYTER_TOKEN="easy" \
--v $BUILD_DIR:/home/jovyan/work $REPO_URL
-```
-
-3. You will now be able to open jupyter notebooks and run notebooks/MLProject2_GAP.ipynb
 
