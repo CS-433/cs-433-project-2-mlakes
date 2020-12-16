@@ -9,7 +9,7 @@ Our main contribution is the incorporation and comparison of state-of-the-art da
 
 Our proposed model is the one that uses CT-BERT language model which achieves **0.906** accuracy and **0.905** f1-score in the test set and it was placed at the third position of the respective AIcrowd competition (submission ID: 107963).
 
-Our **pre-trained model** can be found [here](https://drive.google.com/file/d/1172IY_3vYOWndGdEMhp3XB1AQZ_Bm7xl/view?usp=sharing).
+Our **pre-trained model** can be found [here](https://drive.google.com/drive/folders/1aLWxJdPFwOyqvNkkc_QyzhBC9ofY9tgS?usp=sharing).
 
 # Colab
 For a step-by-step guide to run the project, please take a look at this notebook:
