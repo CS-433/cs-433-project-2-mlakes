@@ -1,0 +1,11 @@
+pandas
+seaborn
+torch
+sklearn
+emoji
+nltk
+unidecode
+spacy
+tensorflow
+keras
+flair

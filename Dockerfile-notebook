@@ -1,0 +1,26 @@
+FROM jupyter/datascience-notebook
+
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+
+USER root
+
+RUN apt-get -y update && \
+        apt-get install -y --no-install-recommends \
+        gcc \
+        build-essential \
+        libpq-dev \
+        liblapack-dev \
+        git \
+        graphviz
+
+RUN pip install --upgrade pip
+
+COPY requirements.txt .
+
+RUN pip install -r requirements.txt
+
+RUN python -m spacy download en_core_web_sm
+RUN python -m spacy download en_core_web_lg
+RUN python -m spacy download en
+
+RUN pip install git+https://github.com/huggingface/transformers.git
