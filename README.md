@@ -198,5 +198,12 @@ project
 
 ```
 
+# Authors
+* Angeliki Romanou @agromanou
+* George Fotiadis @geofot96
+* Paola Mejia @paola-md
+
+To see the development of the project and the interesting discussions we had in each pull request, you can visit our development repository:
+https://github.com/geofot96/MLProject2/
 
 
