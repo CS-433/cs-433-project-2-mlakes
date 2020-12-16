@@ -7,20 +7,23 @@ We present four different models: a simple machine learning baseline model; two 
 
 Our main contribution is the incorporation and comparison of state-of-the-art data representations; transformers and classification models; as well as the use of zero-shot learning for data efficiency. 
 
-Our proposed model is the one that uses CT-BERT language model which achieves **0.906** accuracy and **0.905** f1-score in the test set and it was placed at the third position of the respective AIcrowd competition.
+Our proposed model is the one that uses CT-BERT language model which achieves **0.906** accuracy and **0.905** f1-score in the test set and it was placed at the third position of the respective AIcrowd competition (submission ID: 107963).
 
 # Colab
-For a demo on how the best model was finetuned, please take a look at this colab:
+For a step-by-step guide to run the project, please take a look at this colab:
 
 <p align="left"><a href="https://colab.research.google.com/drive/1cxs7OSn9n3HlGPBSR77QkY5H0WHjV6Vx?usp=sharing" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></p>
 
+We strongly advice running the project with GPU and Colab offers free GPUs. 
 
-
+# Step-by-step guide
 
 * [Getting started](#getting-started)
-    * [Data](#data)
+    * [Install](#install)
     * [Dependencies](#dependencies)
-    * [Report](#report)
+    * [Data](#report)
+* [Modeling](#training-the-model)
+    * [training ]
 * [Project Architecture](#project-architecture)
 * [Running the code](#running-the-code)
     * [Running vanilla models](#running-vanilla-models)
@@ -29,15 +32,64 @@ For a demo on how the best model was finetuned, please take a look at this colab
 
 
 ## Getting started
-#### Data
+
+### Install
+Clone and enter the repository
+```bash
+git clone https://paola-md:<>@github.com/CS-433/cs-433-project-2-mlakes MLProject2
+cd MLProject2
+```
+
+Project dependencies are located in the `requirements.txt` file. \
+To install them you should run:
+```bash
+pip install -r requirements.txt
+```
+
+### Data
 The raw data can be downloaded form the webpage of the AIcrowd challenge: \
 https://www.aicrowd.com/challenges/epfl-ml-text-classification/dataset_files. \
 The data should be located in the `data/` directory in csv format.
 
+To do this, move the zip file to the data directory and run
+```bash
+unzip data/twitter-datasets.zip -d data/
+
+mv data/twitter-datasets/train_neg.txt data/train_neg.txt 
+mv data/twitter-datasets/train_pos.txt data/train_pos.txt 
+mv data/twitter-datasets/train_neg_full.txt data/train_neg_full.txt 
+mv data/twitter-datasets/train_pos_full.txt data/train_pos_full.txt 
+mv data/twitter-datasets/test_data.txt data/test_data.txt
+```
+# Modeling
+
+## Training
+To train the model, you can run
+```bash
+python src/run.py --training
+```
+
+To run a particular model, the name of the model can be passed as a parameter
+```bash
+python src/run.py --training --glove
+```
+
+## Testing
+To create the predictions, you can run
+```bash
+python src/run.py --testing
+```
+## Complete pipeline
+If no parameters are passed, bert model is trained and then the predictions on the test data are made. 
+```bash
+python src/run.py --testing
+``
+
+
 
 #### Report
 Our paper regarding the methodology and the experiments of the proposed model 
-is located under the `report/` directory in LaTeX and pdf format. 
+is located under the `report/` directory in pdf format. 
 
 
 #### Dependencies
