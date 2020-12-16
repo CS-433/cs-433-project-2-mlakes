@@ -1,14 +1,16 @@
 #!/usr/bin/env python3
 import pickle
 
-
+EMBEDDINGS_DIR = './../data/embeddings/'
 def main():
     vocab = dict()
-    with open('vocab_cut.txt') as f:
+    file_dir = EMBEDDINGS_DIR + 'vocab_cut.txt'
+    with open(file_dir) as f:
         for idx, line in enumerate(f):
             vocab[line.strip()] = idx
 
-    with open('vocab.pkl', 'wb') as f:
+	file_dir =  EMBEDDINGS_DIR + 'vocab.pkl'
+    with open(file_dir, 'wb') as f:
         pickle.dump(vocab, f, pickle.HIGHEST_PROTOCOL)
 
 
