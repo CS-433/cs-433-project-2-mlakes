@@ -1,4 +1,4 @@
-# Smiley prediction on Twitter data
+# Smiley prediction on Twitter data :)
 
 This project is the second group assignment for the Machine Learning course (CS-443) at EPFL. 
 
