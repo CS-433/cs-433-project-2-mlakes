@@ -24,6 +24,7 @@ We strongly advice running the project with GPU and Colab offers free GPUs.
     * [Install](#install)
     * [Data](#report)
 * [Modeling](#training-the-model)
+    * [Embeddings](#embeddings)
     * [Training](#training)
     * [Testing](#testing)
     * [Complete pipeline](#complete-pipeline)
