@@ -26,6 +26,7 @@ For a step-by-step guide to run all the experiments the project, please take a l
     * [Testing](#testing)
     * [Complete pipeline](#complete-pipeline)
     * [Running with Docker](#running-with-docker)
+* [Testing the code](#testing-the-code)
 * [Project Architecture](#project-architecture)
     * [Report](#report)
     * [Folder structure](#folder-structure)
@@ -166,6 +167,14 @@ or run from the terminal
 python src/run.py 
 ```
 
+## Testing the code
+To test the code of the data transformations please run:
+```bash
+cd src
+python test_preprocessing.py 
+python test_data_cleaning.py 
+python test_embeddings.py 
+```
 
 ## Project Architecture
 
