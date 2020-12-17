@@ -9,13 +9,13 @@ Our proposed model is the one that uses [CT-BERT](https://github.com/digitalepid
 Our **pre-trained model** can be found [here](https://drive.google.com/drive/folders/1aLWxJdPFwOyqvNkkc_QyzhBC9ofY9tgS?usp=sharing).
 
 # Colab
-For a step-by-step guide to run the project, please take a look at this notebook:
+For a step-by-step guide to run all the experiments the project, please take a look at this notebook:
 
 <p align="left"><a href="https://colab.research.google.com/drive/1cxs7OSn9n3HlGPBSR77QkY5H0WHjV6Vx?usp=sharing" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></p>
 
-We strongly advice running the project with GPU and Colab offers free GPUs. 
+**We strongly advice running the project with the above Colab notebook which offers free GPUs.** 
 
-# Step-by-step guide
+# Step-by-step guide for local deployment
 
 * [Getting started](#getting-started)
     * [Install](#install)
