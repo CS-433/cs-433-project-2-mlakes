@@ -24,7 +24,7 @@ models = {
 }
 
 
-def run_tfidf_ml_model(tweets, labels, model, n_gram=1,
+def run_tfidf_ml_model(tweets, labels, model,
                        save_model=False, cross_validation=True):
     """
     Train a logistic regression model with tf-idf features.
@@ -32,7 +32,6 @@ def run_tfidf_ml_model(tweets, labels, model, n_gram=1,
     :param tweets: pd.DataFrame with the features
     :param labels: pd.DataFrame with the labels
     :param model: str, the machine learning model that should be fitted tp the data
-    :param n_gram: int, the max number of n-gram features
     :param save_model: bool
     :param cross_validation: bool
     """
@@ -41,7 +40,7 @@ def run_tfidf_ml_model(tweets, labels, model, n_gram=1,
     print("-" * 100 + "\n")
 
     print("Creating tf-idf features...")
-    tfidf_data = create_tf_idf(tweets['tweet'], n_gram)
+    tfidf_data = create_tf_idf(tweets['tweet'])
 
     # Define classifier
     if model in ['lg']:

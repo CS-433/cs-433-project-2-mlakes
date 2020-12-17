@@ -5,13 +5,12 @@ from keras.preprocessing.text import Tokenizer
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 
 
-def create_tf_idf(tweets, n_gram):
+def create_tf_idf(tweets):
     """
     Creates tf-idf features.
     It fits a vectorizer in the training data and applies it in validation ones.
 
     :param tweets: pd.Series of the tweets
-    :param n_gram: int, the max number of n-gram features
     :return:
         train: pd.DataFrame with tf-idf features of the training set
         dev: pd.DataFrame with tf-idf features of the dev set

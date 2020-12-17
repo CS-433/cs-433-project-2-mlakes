@@ -9,7 +9,7 @@ from tqdm import tqdm
 from src.data_cleaning import clean_text, remove_stop_words, remove_punctuation
 
 # To download spacy model, run in terminal
-# pip3 install spacy
+# pip install spacy
 # python -m spacy download en_core_web_sm
 # python -m spacy download en_core_web_lg
 
@@ -72,6 +72,7 @@ def apply_preprocessing_bert(tweets, model_name='digitalepidemiologylab/covid-tw
     Applies corpus preprocessing on tweets.
 
     :param tweets: pd.DataFrame with the tweets.
+    :param model_name: str, the file name of the model.
     :return: pytorch Dataset with the tokens, labels and attention mask
     """
     tweets['original_tweet'] = tweets['tweet']
@@ -123,7 +124,7 @@ def tokenize_bert(tweet, tokenizer):
         attention_mask: list, mask of the input tweet
     """
     encoded_dict = tokenizer.encode_plus(tweet,
-                                         max_length=96,
+                                         max_length=100,
                                          truncation=True,
                                          add_special_tokens=True,  # Add '[CLS]' and '[SEP]'
                                          padding='max_length',  # Pad & truncate all sentences.

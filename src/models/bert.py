@@ -1,6 +1,6 @@
 import torch
 from torch.utils.data import DataLoader
-from transformers import AutoModelForSequenceClassification,  AdamW, \
+from transformers import AutoModelForSequenceClassification, AdamW, \
     get_cosine_with_hard_restarts_schedule_with_warmup
 from tqdm import tqdm
 
@@ -12,15 +12,17 @@ seed_everything()
 
 
 def run_bert(train_tweets, val_tweets, save_model,
-            learning_rate = 5e-6,
-            model_name = 'bert',
-            epochs=1):
+             learning_rate=5e-6,
+             model_name='bert',
+             epochs=1):
     """
     Train a neural network with bert tokens.
 
     :param train_tweets: np.array with the features
     :param val_tweets: np.array with the features
     :param save_model: bool
+    :param learning_rate: float
+    :param model_name: str.
     :param epochs: int
     """
     print("\n" + "-" * 100)
@@ -50,7 +52,7 @@ def run_bert(train_tweets, val_tweets, save_model,
                       )
 
     total_steps = len(train_dataloader) * epochs
-    warmup = len(train_dataloader)*0.01
+    warmup = len(train_dataloader) * 0.01
     scheduler = get_cosine_with_hard_restarts_schedule_with_warmup(optimizer,
                                                                    num_warmup_steps=warmup,
                                                                    num_training_steps=total_steps)
@@ -131,11 +133,11 @@ def validate_model(model, validation_dataloader, device):
     return avg_val_loss, avg_val_accuracy
 
 
-def predict_bert(dataset, model_name= 'bert_0'):
+def predict_bert(dataset, model_name='bert_0'):
     """
     Uses pre-trained model to make predictions on the test dataset
     :param dataset: pytorch DataLoader class
-    :param final_model_name: str name of model
+    :param model_name: str name of model
     """
     if torch.cuda.is_available():
         device = torch.device("cuda")
@@ -144,7 +146,7 @@ def predict_bert(dataset, model_name= 'bert_0'):
 
     test_dataloader = DataLoader(dataset, shuffle=False, batch_size=32)
 
-    final_model_name =  MODEL_FOLDER + model_name
+    final_model_name = MODEL_FOLDER + model_name
     model = AutoModelForSequenceClassification.from_pretrained(
         final_model_name,
         num_labels=2,

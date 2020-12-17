@@ -56,6 +56,11 @@ To install them you should run:
 pip install -r requirements.txt
 ```
 
+To install spacy dependencies please run the following:
+```bash
+python -m spacy download en_core_web_sm
+```
+
 ### Data
 The raw data can be downloaded form the webpage of the AIcrowd challenge: \
 https://www.aicrowd.com/challenges/epfl-ml-text-classification/dataset_files. \

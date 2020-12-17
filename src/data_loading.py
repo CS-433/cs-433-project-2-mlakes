@@ -66,7 +66,7 @@ def split_data_bert(dataset, ratio=0.95):
     """
     Splits the data into training and validation datasets based on a given ratio.
 
-    :param tweets: pd.DataFrame with the training data (features and labels)
+    :param dataset: pd.DataFrame with the training data (features and labels)
     :param ratio: float, the splitting ratio
     :return:
         train_tweets: pd.DataFrame with the training features

@@ -15,7 +15,7 @@ def clean_text(text):
     :param text: tweet to be cleaned
     :return: str with the clean tweet
     """
-    text = text.lower() # already lowercase
+    text = text.lower()  # already lowercase
     text = standardize_text(text)
     text = remove_twitter_syntax(text)
     text = translate_emojis(text)
@@ -23,7 +23,6 @@ def clean_text(text):
     text = treat_punctuation(text)
     text = decontract(text)
     text = extend_slang(text)
-    text = remove_extra_characters(text)
     text = text.strip()  # removes extra white spaces
     return text
 
@@ -33,6 +32,7 @@ def standardize_text(text):
     Replaces \r, \n and \t with white spaces
     removes all other control characters and unicode symbols
     replaces accents and foreign letters
+
     :param text: tweet to be cleaned
     :return: str with the clean tweet
     """
@@ -119,14 +119,14 @@ def treat_punctuation(text):
     text = re.sub(r"&", "and", text, flags=FLAGS)
     text = text.translate(transl_table)
     text = text.replace('…', '...')
-    text = re.sub('([!?()]) ([!?()])', r'\1\2', text) #removes spaces between punctuation
+    text = re.sub('([!?()]) ([!?()])', r'\1\2', text)  # removes spaces between punctuation
     text = re.sub(r"([\?#@+,<>%~`!$&\(\):;]){2,}", r"\1", text, flags=FLAGS)  # removes repeated punctuation
     return text
 
 
 def decontract_word(phrase):
     """
-    decontracts most common contractions
+    Decontracts most common contractions
 
     :param text: tweet to be cleaned
     :return: str with the clean tweet
@@ -151,7 +151,7 @@ def decontract_word(phrase):
 
 def decontract(text):
     """
-    decontracts words in phrases
+    Decontracts words in phrases
 
     :param text: tweet to be cleaned
     :return: str with the clean tweet
@@ -163,7 +163,7 @@ def decontract(text):
 
 def extend_slang(text):
     """
-    replaces slang with english words
+    Replaces slang with english words
 
     :param text: tweet to be cleaned
     :return: str with the clean tweet
@@ -194,12 +194,12 @@ def extend_slang(text):
                               "rt": "",
                               "isnt": "is not",
                               "imma": "i am going to",
-                              "ima":"i am going to",
-                              "atm" : "at the moment",
-                              "wbu" : "what about you",
-                              "btw" : "by the way",
-                              "brb" : "i will be right back",
-                              "asap" : "as soon as possible"
+                              "ima": "i am going to",
+                              "atm": "at the moment",
+                              "wbu": "what about you",
+                              "btw": "by the way",
+                              "brb": "i will be right back",
+                              "asap": "as soon as possible"
                               }
     # fix specific words
     words = text.split()
@@ -207,22 +207,10 @@ def extend_slang(text):
     return text
 
 
-def remove_extra_characters(text):
-    """
-
-    :param text: tweet to be cleaned
-    :return: str with the clean tweet
-    """
-    control_char_regex = re.compile(r'[\<>$%#"/\(\)^]+')
-    # replace \t, \n and \r characters by a whitespace
-    text = re.sub(control_char_regex, '', text)
-    text = re.sub(' +', ' ', text, flags=FLAGS)
-    return text.strip()
-
-
 def remove_stop_words(tokens):
     """
     Removes stop words according to ntlk.stop_words library.
+
     :param tokens: list of the tokens for a tweet
     :return: list of the cleaned tokens of the input tweet
     """
@@ -231,6 +219,13 @@ def remove_stop_words(tokens):
 
 
 def remove_punctuation(text):
+    """
+    Removes all punctuation from a sentence.
+
+    :param text: str, the tweet
+    :return: str, the tweet without punctuation
+    """
     text = text.translate(str.maketrans('', '', string.punctuation))
     text = re.sub(' +', ' ', text, flags=FLAGS)
+    text = re.sub(r'[^\w\s]', '', text)
     return text.strip()

@@ -87,7 +87,7 @@ class TestCleaning(unittest.TestCase):
         self.assertIs(type(cleaned_text), str)
 
     def test_remove_punctuation(self):
-        text = "hey! ... ?! ,"
+        text = "hey! .. . ? ! ,"
         cleaned_text = remove_punctuation(text)
         # hey
 

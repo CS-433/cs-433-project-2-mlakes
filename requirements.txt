@@ -26,7 +26,7 @@ tensorflow-metadata==0.25.0
 tensorflow-privacy==0.2.2
 tensorflow-probability==0.11.0
 tokenizers==0.9.3
-torch==1.7.0+cu101
+torch==1.7.0
 torchsummary==1.5.1
 torchtext==0.3.1
 tqdm==4.41.1

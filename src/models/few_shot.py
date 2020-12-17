@@ -43,11 +43,11 @@ def run_zero_shot(train_tweets, train_y, val_tweets, val_y):
     print("Zero shot")
     # download https://nlp.informatik.hu-berlin.de/resources/models/tars-base/tars-base.pt
     tars = TARSClassifier.load(
-        os.path.join(os.path.dirname(__file__), "..", "..","saved_models", "tars-base.pt")
+        os.path.join(os.path.dirname(__file__), "..", "..", "saved_models", "tars-base.pt")
     )
 
     train_tweets["output"] = train_y.iloc[:]
-    train = train_tweets.apply(create_sentences, axis = 1).tolist()
+    train = train_tweets.apply(create_sentences, axis=1).tolist()
     train = SentenceDataset(train)
 
     val_tweets["output"] = val_y.iloc[:]
@@ -65,14 +65,13 @@ def run_zero_shot(train_tweets, train_y, val_tweets, val_y):
                   learning_rate=0.02,  # use very small learning rate
                   mini_batch_size=16,  # small mini-batch size since corpus is tiny
                   max_epochs=10,  # terminate after 10 epochs
-                  #train_with_dev=True,
                   )
 
     print("DONE TRAINING")
     tars = TARSClassifier.load('../../data/zero_shot/final-model.pt')
 
-    val_tweets["pred"] = val_tweets.apply(predict_few_shot, args = (tars,), axis = 1)
-    val_tweets["pred"] = val_tweets["pred"].apply(lambda x : 1 if x == "positive" else -1)
+    val_tweets["pred"] = val_tweets.apply(predict_few_shot, args=(tars,), axis=1)
+    val_tweets["pred"] = val_tweets["pred"].apply(lambda x: 1 if x == "positive" else -1)
 
     pred = pd.DataFrame(list(val_tweets["pred"]), columns=['Prediction'])
     pred.index += 1

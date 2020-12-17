@@ -4,20 +4,17 @@ from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense, LSTM, Dropout, Embedding, Bidirectional
 import pickle
 from sklearn.metrics import classification_report, accuracy_score
+from sklearn.model_selection import KFold
 import numpy as np
 import os
 
-from sklearn.model_selection import KFold
 from src.evaluate import plot_graphs
 from src.embeddings import texts_to_sequences, text_to_glove
 from src.data_loading import seed_everything
 
-
 DATA_FOLDER = "./../data/"
 MODEL_FOLDER = './../models/'
 EMBEDDINGS_FOLDER = DATA_FOLDER + 'embeddings/'
-#MODEL_FOLDER = '../models/'
-#EMBEDDINGS_FOLDER = '../data/embeddings/'
 seed_everything()
 
 
@@ -71,13 +68,21 @@ def create_glove(tweets, max_sequence_length, embedding_length=100):
     return train_v, len(embeddings_dict)
 
 
-def run_bidirectional_lstm(tweets, labels, embeddings='glove', cross_validation=False, save_model=False, verbose=False):
+def run_bidirectional_lstm(tweets, labels,
+                           embeddings='glove',
+                           lr=0.0001,
+                           batch_size=128,
+                           cross_validation=False,
+                           save_model=False,
+                           verbose=False):
     """
     Trains a bi-directional lstm
 
     :param tweets: pd.DataFrame with the features
     :param labels: pd.DataFrame with the labels
     :param embeddings: str, the type of embeddings
+    :param lr: float, the learning rate
+    :param batch_size: int, the size of the batches in training
     :param save_model: bool
     :param cross_validation: bool
     :param verbose: bool
@@ -118,18 +123,20 @@ def run_bidirectional_lstm(tweets, labels, embeddings='glove', cross_validation=
         print('Validation data shape: {}'.format(val_x.shape))
 
         if embeddings == 'word2vec':
-            embedding_dim = 64
+            num_epochs = 100
+            embedding_dim = 128
 
             model = Sequential()
             model.add(Embedding(len(vocab), embedding_dim))
             model.add(Dropout(0.5))
-            model.add(Bidirectional(LSTM(embedding_dim)))
+            model.add(Bidirectional(128))
             model.add(Dense(1, activation='sigmoid'))
             model.summary()
 
         elif embeddings == 'glove':
+            num_epochs = 5
             model = Sequential()
-            model.add(Bidirectional(LSTM(64, return_sequences=True, dropout=0.2),
+            model.add(Bidirectional(LSTM(128, return_sequences=True, dropout=0.2),
                                     input_shape=(sequence_length, embedding_dim)))
             model.add(Bidirectional(LSTM(32)))  # last layer only returns the last input
             model.add(Dense(1, activation='sigmoid'))
@@ -140,19 +147,18 @@ def run_bidirectional_lstm(tweets, labels, embeddings='glove', cross_validation=
 
         model.compile(
             loss='binary_crossentropy',
-            optimizer=tf.keras.optimizers.Adam(lr=0.0001, decay=1e-6),
-            # TODO maybe do some hyperparameter optimization?,
+            optimizer=tf.keras.optimizers.Adam(lr=lr, decay=1e-6),
             metrics=['accuracy'])
 
         filepath = MODEL_FOLDER + "best_model.h5"
         checkpoint = ModelCheckpoint(filepath, monitor='val_accuracy', verbose=1, save_best_only=True,
                                      save_weights_only=False, mode='max')
         callbacks_list = [checkpoint]
-        num_epochs = 100
         print("Fitting model...")
         history = model.fit(train_x, train_y,
                             epochs=num_epochs,
                             validation_data=(val_x, val_y),
+                            batch_size=batch_size,
                             callbacks=callbacks_list,
                             verbose=2)
 
@@ -166,6 +172,7 @@ def run_bidirectional_lstm(tweets, labels, embeddings='glove', cross_validation=
         print('Accuracy: {:.3f}'.format(accuracy_score(y_true=val_y, y_pred=pred)))
         print(classification_report(y_true=val_y, y_pred=pred))
 
+        # if no cross validation is specified, the loop will exit keeping the first iteration of the training.
         if not cross_validation:
             break
 

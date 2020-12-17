@@ -22,6 +22,7 @@ def plot_graphs(history, metric):
 
 
 def get_accuracy(preds, labels):
+    """ Computes the accuracy score over torch tensors. """
     pred_flat = preds.flatten()
     labels_flat = labels.flatten()
     return np.sum(pred_flat == labels_flat) / len(labels_flat)
