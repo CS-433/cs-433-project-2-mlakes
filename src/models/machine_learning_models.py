@@ -9,8 +9,8 @@ from sklearn.naive_bayes import MultinomialNB
 from sklearn.model_selection import cross_validate
 from sklearn.model_selection import KFold
 
-from src.data_loading import seed_everything, split_data
-from src.embeddings import create_tf_idf
+from data_loading import seed_everything, split_data
+from embeddings import create_tf_idf
 
 MODEL_FOLDER = '../../models/'
 EMBEDDINGS_FOLDER = '../../data/embeddings/'

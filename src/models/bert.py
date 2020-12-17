@@ -4,8 +4,8 @@ from transformers import AutoModelForSequenceClassification, AdamW, \
     get_cosine_with_hard_restarts_schedule_with_warmup
 from tqdm import tqdm
 
-from src.evaluate import get_accuracy
-from src.data_loading import seed_everything
+from evaluate import get_accuracy
+from data_loading import seed_everything
 
 MODEL_FOLDER = './../models/'
 seed_everything()

@@ -8,9 +8,9 @@ from sklearn.model_selection import KFold
 import numpy as np
 import os
 
-from src.evaluate import plot_graphs
-from src.embeddings import texts_to_sequences, text_to_glove
-from src.data_loading import seed_everything
+from evaluate import plot_graphs
+from embeddings import texts_to_sequences, text_to_glove
+from data_loading import seed_everything
 
 DATA_FOLDER = "./../data/"
 MODEL_FOLDER = './../models/'
