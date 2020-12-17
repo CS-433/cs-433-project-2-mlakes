@@ -129,7 +129,7 @@ def run_bidirectional_lstm(tweets, labels,
             model = Sequential()
             model.add(Embedding(len(vocab), embedding_dim))
             model.add(Dropout(0.5))
-            model.add(Bidirectional(128))
+            model.add(Bidirectional(LSTM(128)))
             model.add(Dense(1, activation='sigmoid'))
             model.summary()
 
