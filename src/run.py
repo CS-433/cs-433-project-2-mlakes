@@ -22,7 +22,7 @@ def run_training(model='lg', save_model=False):
     :param save_model: boolean indicating whether the model should be saved or not
     """
     # Load data
-    tweets = load_tweets(sample=False, frac=1)
+    tweets = load_tweets(sample=True, frac=1)
 
     # Data preprocessing
     if model == 'bert':
