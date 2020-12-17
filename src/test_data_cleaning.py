@@ -1,9 +1,9 @@
 import unittest
 import spacy
 
-from src.data_cleaning import standardize_text, remove_twitter_syntax, treat_punctuation, translate_emojis, \
+from data_cleaning import standardize_text, remove_twitter_syntax, treat_punctuation, translate_emojis, \
     remove_excess, decontract, extend_slang, clean_text, remove_punctuation, remove_stop_words
-from src.preprocessing import tokenize
+from preprocessing import tokenize
 
 
 class TestCleaning(unittest.TestCase):
@@ -57,7 +57,6 @@ class TestCleaning(unittest.TestCase):
         self.assertEqual(len(cleaned_text), 29)
         self.assertEqual("! y don't u and me ... ! huh?", cleaned_text)
         self.assertIs(type(cleaned_text), str)
-
 
     def test_decontract(self):
         text = "ma'am i've but don't or won't"

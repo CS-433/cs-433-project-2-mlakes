@@ -2,7 +2,7 @@ import unittest
 import pandas as pd
 import spacy
 
-from src.preprocessing import tokenize, lemmatization, apply_preprocessing, apply_preprocessing_bert
+from preprocessing import tokenize, lemmatization, apply_preprocessing, apply_preprocessing_bert
 
 
 class TestPreprocessing(unittest.TestCase):
@@ -36,7 +36,7 @@ class TestPreprocessing(unittest.TestCase):
         preprocessed_data = apply_preprocessing(data)
 
         self.assertEqual(3, len(preprocessed_data))
-        self.assertEqual(2, len(preprocessed_data.columns))
+        self.assertEqual(1, len(preprocessed_data.columns))
 
     def test_apply_preprocessed_bert(self):
         data = pd.DataFrame({'tweet': [

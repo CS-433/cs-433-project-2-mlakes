@@ -1,6 +1,6 @@
 import unittest
-from src.embeddings import text_to_glove
-from src.preprocessing import apply_preprocessing
+from embeddings import text_to_glove
+from preprocessing import apply_preprocessing
 import pandas as pd
 import numpy as np
 

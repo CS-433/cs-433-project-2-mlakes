@@ -23,6 +23,7 @@ def clean_text(text):
     text = treat_punctuation(text)
     text = decontract(text)
     text = extend_slang(text)
+    text = remove_extra_characters(text)
     text = text.strip()  # removes extra white spaces
     return text
 
@@ -228,4 +229,18 @@ def remove_punctuation(text):
     text = text.translate(str.maketrans('', '', string.punctuation))
     text = re.sub(' +', ' ', text, flags=FLAGS)
     text = re.sub(r'[^\w\s]', '', text)
+    return text.strip()
+
+
+def remove_extra_characters(text):
+    """
+    Removes special characters
+
+    :param text: tweet to be cleaned
+    :return: str with the clean tweet
+    """
+    control_char_regex = re.compile(r'[\<>$%#"/\(\)^]+')
+    # replace \t, \n and \r characters by a whitespace
+    text = re.sub(control_char_regex, '', text)
+    text = re.sub(' +', ' ', text, flags=FLAGS)
     return text.strip()
