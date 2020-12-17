@@ -8,14 +8,14 @@ Our proposed model is the one that uses [CT-BERT](https://github.com/digitalepid
 
 Our **pre-trained model** can be found [here](https://drive.google.com/drive/folders/1aLWxJdPFwOyqvNkkc_QyzhBC9ofY9tgS?usp=sharing).
 
-# Colab
+## Colab
 For a step-by-step guide to run all the experiments the project, please take a look at this notebook:
 
 <p align="left"><a href="https://colab.research.google.com/drive/1cxs7OSn9n3HlGPBSR77QkY5H0WHjV6Vx?usp=sharing" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></p>
 
 **We strongly advice running the project with the above Colab notebook which offers free GPUs.** 
 
-# Step-by-step guide for local deployment
+## Step-by-step guide for local deployment
 
 * [Getting started](#getting-started)
     * [Install](#install)
@@ -32,9 +32,9 @@ For a step-by-step guide to run all the experiments the project, please take a l
 
 
 
-## Getting started
+### Getting started
 
-### Install
+#### Install
 Clone and enter the repository
 ```bash
 git clone https://<YOUR USER>:<YOUR PASSWORD>@github.com/CS-433/cs-433-project-2-mlakes MLProject2
@@ -58,7 +58,7 @@ To install spacy dependencies please run the following:
 python -m spacy download en_core_web_sm
 ```
 
-### Data
+#### Data
 The raw data can be downloaded form the webpage of the AIcrowd challenge: \
 https://www.aicrowd.com/challenges/epfl-ml-text-classification/dataset_files. \
 The data should be located in the `data/` directory in csv format.
@@ -75,13 +75,13 @@ mv data/twitter-datasets/test_data.txt data/test_data.txt
 ```
 
 
-# Modeling
+### Modeling
 
-## Embeddings
+#### Embeddings
 
 The BiLSTM can be trained with glove and word2vec embeddings. In order to run these models, you need to create the vocabulary (word2vec) or download a pre-trained one (gloVe).
 
-### Word2vec
+#### Word2vec
 Constructs a a vocabulary list of words appearing at least 5 times.
 ```bash
 src/preprocessing_glove/build_vocab.sh
@@ -89,7 +89,7 @@ src/preprocessing_glove/cut_vocab.sh
 python preprocessing_glove/pickle_vocab.py
 ```
 
-### GloVe
+#### GloVe
 You must download the pretrained embeddings from [here](https://nlp.stanford.edu/projects/glove/) or using wget:
 ```bash
 wget http://nlp.stanford.edu/data/glove.twitter.27B.zip
@@ -97,13 +97,13 @@ mv glove.twitter.27B.zip data/embeddings/glove.twitter.27B.zip
 unzip data/embeddings/glove.twitter.27B.zip -d data/embeddings
 ```
 
-### TARS zero shot
+#### TARS zero shot
 ```bash
 wget https://nlp.informatik.hu-berlin.de/resources/models/tars-base/tars-base.pt
 mv tars-base.pt saved_models/tars-base.pt
 ```
 
-## Training
+### Training
 To train the model, you can run
 ```bash
 cd src
@@ -126,18 +126,18 @@ The following models can be trained:
 
 To learn more, read the report :D
 
-## Testing
+### Testing
 To create the predictions, you can run
 ```bash
 python src/run.py --testing
 ```
-## Complete pipeline
+### Complete pipeline
 If no parameters are passed, bert model is trained and then the predictions on the test data are made. 
 ```bash
 python src/run.py 
 ```
 
-### Running with Docker
+## Running with Docker
 The project can be easily run in any virtual machine without the need to install any dependencies using our docker container. 
 
 0. Make sure you have [docker](https://docs.docker.com/engine/install/ubuntu/) and git installed and running.  
@@ -167,14 +167,14 @@ python src/run.py
 ```
 
 
-# Project Architecture
+## Project Architecture
 
 ### Report
 Our paper regarding the methodology and the experiments of the proposed model 
 is located under the `report/` directory in pdf format. 
 
 
-## Folder structure
+### Folder structure
 The source code of this project is structured in the following manner. 
 
 ```
@@ -208,7 +208,7 @@ project
 
 ```
 
-# Authors
+## Authors
 * Angeliki Romanou @agromanou
 * George Fotiadis @geofot96
 * Paola Mejia @paola-md
