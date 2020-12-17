@@ -1,11 +1,8 @@
 # Smiley prediction on Twitter data :)
 
-This project is the second group assignment for the Machine Learning course (CS-443) at EPFL. 
+In this paper, we apply machine learning methods to Twitter data to predict if a message has a positive or a negative smiley. 
 
-We apply machine learning methods to Twitter data to predict if a tweet message used to contain a positive or a negative smiley. 
-We present four different models: a simple machine learning baseline model; two long-short term memory (LSTM) models using word2vec and GloVe embeddings respectively; a zero-shot learning inspired model; and a BERT model. 
-
-Our main contribution is the incorporation and comparison of state-of-the-art data representations; transformers and classification models; as well as the use of zero-shot learning for data efficiency. 
+We present four different types of models: a set of simple machine learning baseline models; two long-short term memory (LSTM) models using word2vec and GloVe embeddings respectively; transformer models; and a few-shot learning model using TARS. 
 
 Our proposed model is the one that uses [CT-BERT](https://github.com/digitalepidemiologylab/covid-twitter-bert) language model which achieves **0.906** accuracy and **0.905** f1-score in the test set and it was placed at the third position of the respective AIcrowd competition (submission ID: 107963).
 
@@ -98,6 +95,12 @@ You must download the pretrained embeddings from [here](https://nlp.stanford.edu
 wget http://nlp.stanford.edu/data/glove.twitter.27B.zip
 mv glove.twitter.27B.zip data/embeddings/glove.twitter.27B.zip
 unzip data/embeddings/glove.twitter.27B.zip -d data/embeddings
+```
+
+### TARS zero shot
+```bash
+wget https://nlp.informatik.hu-berlin.de/resources/models/tars-base/tars-base.pt
+mv tars-base.pt saved_models/tars-base.pt
 ```
 
 ## Training
