@@ -6,7 +6,7 @@ import pandas as pd
 import numpy as np
 from tqdm import tqdm
 
-from src.data_cleaning import clean_text, remove_stop_words, remove_punctuation
+from data_cleaning import clean_text, remove_stop_words, remove_punctuation
 
 # To download spacy model, run in terminal
 # pip install spacy

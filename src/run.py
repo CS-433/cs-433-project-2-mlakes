@@ -2,12 +2,12 @@ import pandas as pd
 import numpy as np
 import click
 
-from src.preprocessing import apply_preprocessing, apply_preprocessing_bert
-from src.data_loading import load_tweets, load_test_tweets, split_data, seed_everything, split_data_bert
-from src.models.bi_lstm import run_bidirectional_lstm
-from src.models.machine_learning_models import run_tfidf_ml_model
-from src.models.few_shot import run_zero_shot
-from src.models.bert import run_bert, predict_bert
+from preprocessing import apply_preprocessing, apply_preprocessing_bert
+from data_loading import load_tweets, load_test_tweets, split_data, seed_everything, split_data_bert
+from models.bi_lstm import run_bidirectional_lstm
+from models.machine_learning_models import run_tfidf_ml_model
+from models.few_shot import run_zero_shot
+from models.bert import run_bert, predict_bert
 
 MODEL_FOLDER = '../models'
 model_name = 'digitalepidemiologylab/covid-twitter-bert'
@@ -108,4 +108,4 @@ def run_pipeline(model, pipeline='inference'):
 
 
 if __name__ == '__main__':
-    run_pipeline(model='bert')
+    run_pipeline()
