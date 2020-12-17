@@ -68,7 +68,7 @@ def run_zero_shot(train_tweets, train_y, val_tweets, val_y):
                   )
 
     print("DONE TRAINING")
-    tars = TARSClassifier.load('../../data/zero_shot/final-model.pt')
+    tars = TARSClassifier.load('../../model/zero_shot/final-model.pt')
 
     val_tweets["pred"] = val_tweets.apply(predict_few_shot, args=(tars,), axis=1)
     val_tweets["pred"] = val_tweets["pred"].apply(lambda x: 1 if x == "positive" else -1)
@@ -77,4 +77,4 @@ def run_zero_shot(train_tweets, train_y, val_tweets, val_y):
     pred.index += 1
     pred.insert(0, 'Id', pred.index)
 
-    pred.to_csv("../../data/predictions/zero_shot_pred.csv", index=False)
+    pred.to_csv("../../predictions/zero_shot_pred.csv", index=False)

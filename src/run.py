@@ -1,5 +1,6 @@
 import pandas as pd
 import numpy as np
+import click
 
 from src.preprocessing import apply_preprocessing, apply_preprocessing_bert
 from src.data_loading import load_tweets, load_test_tweets, split_data, seed_everything, split_data_bert
@@ -83,7 +84,12 @@ def run_inference(final_model_name="bert_0"):
     results.to_csv("./../predictions/predictions.csv", index=False)
 
 
-def run_pipeline(model, pipeline='training'):
+@click.command()
+@click.option('--model', '-m', default='bert', help='The model to run. You can choose between: '
+                                                    'glove`, `word2vec`, `bert` or `zero`')
+@click.option('--pipeline', '-p', default='training', help='The type of the pipeline. '
+                                                           'You can choose between `training`, `inference` or `both`.')
+def run_pipeline(model, pipeline='inference'):
     """
     Runs either training, inference or the complete pipeline
 
@@ -94,9 +100,11 @@ def run_pipeline(model, pipeline='training'):
         run_training(model=model, save_model=False)
     elif pipeline == 'inference':
         run_inference()
-    else:  # both
+    elif pipeline == 'both':  # both
         run_training(model=model, save_model=True)
         run_inference()
+    else:
+        raise ValueError('Please select a valid option for pipeline.')
 
 
 if __name__ == '__main__':
