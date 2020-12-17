@@ -106,13 +106,15 @@ mv tars-base.pt saved_models/tars-base.pt
 ## Training
 To train the model, you can run
 ```bash
-python src/run.py --pipeline training 
+cd src
+python run.py --pipeline training 
 ```
 
 To run a particular model, the name of the model can be passed as a parameter
 ```bash
-python src/run.py --pipeline training \
-                  --model glove 
+cd src
+python run.py --pipeline training \
+              --model glove 
 ```
 
 The following models can be trained:
